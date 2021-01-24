@@ -32,6 +32,10 @@
 class Solution:
     def removeStones(self, stones: List[List[int]]) -> int:
         '''
+        # 同行或者同列，则为一个连通分量，
+        # 遍历每一个stones，有可能是同行的，也有可能是同列的，但都应该是一个连通分量的，因此可以将它们合并在一起
+        # 可以移除石子的最大数量就是：总石子的数量 - 连通分量数目
+
         如果两个石头，横坐标相等或者纵坐标相等，在它们之间形成一条边
         最多可以移除的石头的个数 = 所有石头的个数 - 连通分量的个数。
         题目没有让我们给出具体移除石头的方案，可以考虑使用并查集。
@@ -44,7 +48,7 @@ class Solution:
         '''
         uf = UnionFind()
         for stone1, stone2 in stones:
-            uf.union(stone1 + 10001, stone2)
+            uf.union(stone1 + 10010, stone2)
         return len(stones) - uf.getCount()
 
 class UnionFind:
@@ -81,7 +85,7 @@ class UnionFind:
         if root_x == root_y:
             return
             
-        self.parent[root_x] = self.parent[root_y]
+        self.parent[root_x] = root_y
         self.count -= 1
 # @lc code=end
 
