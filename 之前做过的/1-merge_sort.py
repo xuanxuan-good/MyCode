@@ -6,6 +6,7 @@ def merge_sort(nums, left, right):
     merge_sort(nums, mid + 1, right)
     merge(nums, left, mid, right)
 def merge(nums, left, mid, right):
+    # 这里比较的规则是当a<b时，a在前，b在后；如果要将奇数在后，偶数在前，也可以设置一种规则将它们放进去
     temp = []
     i = left
     j = mid + 1
