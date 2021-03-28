@@ -17,6 +17,7 @@ class Solution:
                 i += 1
                 j += 1
             else:
+                # 如果不满足条件，则只能向后找更大的饼干，分发给孩子
                 j += 1
         return res
 # @lc code=end

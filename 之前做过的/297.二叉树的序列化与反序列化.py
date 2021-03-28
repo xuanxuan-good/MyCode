@@ -28,9 +28,9 @@ class Codec:
                 doit(node.right)
             else:
                 vals.append('#')
-            return node
+            # return node
         doit(root)
-        return ' '.join(vals)  # ' ' 空格
+        return ' '.join(vals)  # ' ' 空格    # 1 2 # # 3 4 # # 5 # #
 
     def deserialize(self, data):
         """Decodes your encoded data to tree.
@@ -38,9 +38,9 @@ class Codec:
         :type data: str
         :rtype: TreeNode
         """
-        vals = iter(data.split())
+        vals = iter(data.split())  # iter用来构造迭代器
         def doit():
-            val = next(vals)
+            val = next(vals)  # next用来取序列中下一个元素
             if val == '#':
                 return None
             node = TreeNode(int(val))

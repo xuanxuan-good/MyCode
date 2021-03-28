@@ -23,20 +23,20 @@ class Solution:
         # terminator
         if root is None:
             return None
+        # 如果两个结点，有一个是根节点，那么返回根节点即可
         if root == p or root == q:
             return root
+        # 如果都不是，那么递归计算左子树和右子树对应的 公共祖先，用left和right表示已经计算好的
         left = self.lowestCommonAncestor(root.left, p, q)
         right = self.lowestCommonAncestor(root.right, p, q)
+        # 如果左右都有值，那么返回root
         if left and right:
             return root
+        # 如果只有一边有值，那么就返回有值这一边
         if not left:
             return right
         if not right:
             return left
-        # if left:
-        #     return left
-        # if right:
-        #     return right
         '''
 # @lc code=end
 
